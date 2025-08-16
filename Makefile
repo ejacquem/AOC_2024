@@ -15,21 +15,17 @@ day%:
 clean:
 	rm input.txt aoc 
 
-init:
-	@if [ -z "$(day)" ]; then \
-		echo "Usage: make init day=dayX"; \
-		exit 1; \
-	fi
-	@if [ -f $(day).cpp ]; then \
-		echo "$(day).cpp already exists! Aborting."; \
+init%: input$*
+	@if [ -f day$*.cpp ]; then \
+		echo "day$*.cpp already exists! Aborting."; \
 		exit 1; \
 	else \
-		cp $(TEMPLATE) $(day).cpp; \
-		echo "Created $(day).cpp from $(TEMPLATE)"; \
+		cp $(TEMPLATE) day$*.cpp; \
+		echo "Created day$*.cpp from $(TEMPLATE)"; \
 	fi
 
 input%:
 	@echo "=== Fetching input for day $* ==="
 	curl -s -H "Cookie: session=$(SESSION)" https://adventofcode.com/$(YEAR)/day/$*/input -o input.txt
 
-.PHONY: init
+.PHONY: init input
