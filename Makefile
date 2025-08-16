@@ -1,9 +1,8 @@
 
 include .env
-export
 
 YEAR = 2024
-FLAGS = -O2
+FLAGS = -O2 -g
 TEMPLATE = template.cpp
 
 day%:
@@ -15,7 +14,7 @@ day%:
 clean:
 	rm input.txt aoc 
 
-init%: input$*
+init%:
 	@if [ -f day$*.cpp ]; then \
 		echo "day$*.cpp already exists! Aborting."; \
 		exit 1; \
