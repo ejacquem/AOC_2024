@@ -5,6 +5,15 @@
 #include <sstream>
 #include <algorithm>
 
+#if DEBUG
+ #define LOG(x) do { std::cout << x; } while(0)
+#else
+ #define LOG(x) 
+#endif
+
+using std::vector;
+using std::string;
+
 void part_one()
 {
 	int result = 0;
@@ -19,7 +28,7 @@ void part_two()
 
 int main() {
     std::ifstream file("input.txt");
-    std::string line;
+    string line;
     while (std::getline(file, line)) {
         // std::cout << line << "\n";
     }

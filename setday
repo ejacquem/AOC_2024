@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Usage: $0 <DAY>"
+  exit 1
+fi
+
+DAY="$1"
+
+if [ ! -f .env ]; then
+  echo ".env file not found!"
+  exit 1
+fi
+
+if grep -q "^DAY=" .env; then
+  sed -i "s/^DAY=.*/DAY=$DAY/" .env
+else
+  echo "DAY=$DAY" >> .env
+fi
+
+echo "Updated .env: DAY=$DAY"
