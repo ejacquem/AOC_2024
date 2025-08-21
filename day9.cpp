@@ -76,7 +76,7 @@ void part_one(vector<int> disk_map)
 	std::cout << "Part one: "  << result << std::endl;
 }
 
-int get_file_size(vector<int> file_disk, int end)
+int get_file_size(vector<int> &file_disk, int end)
 {
 	int count = 0;
 	int data = file_disk[end - count];
